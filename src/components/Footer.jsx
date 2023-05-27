@@ -42,10 +42,7 @@ const Footer = () => {
           </Typography>{" "}
         </Link>
         <Typography color="secondary" variant="caption">
-          {/* Copyright @DavidHughesJr Youtube Video   */}© {year} Irwin
-          Pendugem Handal.
-          {/* <br />
-          All Rights Reserved */}
+          © {year} Irwin Pendugem Handal.
         </Typography>
       </Stack>
     </Box>

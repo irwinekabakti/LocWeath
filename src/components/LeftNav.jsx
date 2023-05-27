@@ -39,10 +39,6 @@ const useRouteMatch = (patterns) => {
 };
 
 const LeftNav = () => {
-  // You need to provide the routes in descendant order.
-  // This means that if you have nested routes like:
-  // users, users/new, users/edit.
-  // Then the order should be ['users/add', 'users/edit', 'users'].
   const routeMatch = useRouteMatch(["/", "/map", "/saves"]);
   const currentTab = routeMatch?.pattern?.path;
 

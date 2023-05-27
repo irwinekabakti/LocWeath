@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography, Grid, Stack, Paper } from "@mui/material";
 import { Colors } from "../helper/color";
 import { useSelector } from "react-redux";
-// import Moment from "react-moment";
 import moment from "moment";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -82,7 +81,6 @@ const TodaysOverview = ({ current, forecast }) => {
                   <Stack justifyContent="center" alignItems="center">
                     <Typography variant="subtitle2" color="secondary">
                       {" "}
-                      {/* <Moment format="hhA" date={dateToFormatHour} />{" "} */}
                       {moment(dateToFormatHour).format("h A")}
                     </Typography>
                     <img src={hour.condition.icon} alt="weather icon" />

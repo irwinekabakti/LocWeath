@@ -6,8 +6,6 @@ import moment from "moment";
 const ThreeDaysForecast = ({ forecast }) => {
   const fahrenheit = useSelector((state) => state.weatherState.fahrenheit);
 
-  // console.log(forecast);
-
   return (
     <Grid sx={{ paddingTop: 2 }} container columns={{ xs: 1, sm: 2, md: 12 }}>
       {forecast?.map((days, i) => (

@@ -16,7 +16,6 @@ const Dashboard = () => {
   const getGeoLocation = useGeoLocation();
   const isLoadingLocation = getGeoLocation.loaded;
   const locationState = useSelector((state) => state.weatherState.location);
-  // const { data, isFetching } = useGetForecastWeatherQuery("Las Vegas");
   const { data, isFetching } = useGetForecastWeatherQuery(locationState);
   const dispatch = useDispatch();
 
@@ -26,8 +25,6 @@ const Dashboard = () => {
   const forecast = data?.forecast?.forecastday;
   const location = data?.location;
   const dateToFormat = location?.localtime;
-
-  // console.log(locationState);
 
   useEffect(() => {
     let currentLocation = "";
@@ -49,8 +46,6 @@ const Dashboard = () => {
     locationState,
   ]);
 
-  // console.log(getGeoLocation);
-
   if (isFetching || !isLoadingLocation) {
     return <Loader />;
   }
@@ -65,9 +60,6 @@ const Dashboard = () => {
           <Stack>
             <Typography variant="h5">{location?.name}</Typography>
             <Typography variant="subtitle2">{location?.region}</Typography>
-            {/* <Typography variant="subtitle2">
-              <Moment date={{ dateToFormat }} />
-              </Typography> */}
             <Typography variant="subtitle2">
               {moment(dateToFormat).format("LLLL")}
             </Typography>
