@@ -20,6 +20,8 @@ const Dashboard = () => {
   const { data, isFetching } = useGetForecastWeatherQuery(locationState);
   const dispatch = useDispatch();
 
+  console.log(data);
+
   const current = data?.current;
   const forecast = data?.forecast?.forecastday;
   const location = data?.location;
@@ -72,7 +74,7 @@ const Dashboard = () => {
           </Stack>
           <Searchbar location={location} />
         </Stack>
-        {/* <TodaysOverview current={{current}} forecast={{forecast}}/> */}
+        <TodaysOverview current={current} forecast={forecast} />
         {/* <ThreeDaysForecast forecast={{forecast}}/> */}
         {/* <WeatherChart forecast={{forecast}}/> */}
       </Box>

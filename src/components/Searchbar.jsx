@@ -12,14 +12,16 @@ import { useGetSearchWeatherQuery } from "../store/query/weather-api";
 import { setLocation } from "../store/action/weather-slice";
 import { setSaves, setItemSaved } from "../store/action/weather-slice";
 
-const Searchbar = () => {
+const Searchbar = ({ location }) => {
   const [selected, setSelected] = useState(false);
   const [search, setSearch] = useState("");
   const [autoCompleteList, setAutoCompleteList] = useState([]);
-  const dispatch = useDispatch();
 
   const { data } = useGetSearchWeatherQuery(search);
   const saves = useSelector((state) => state.weatherState.saves);
+  const dispatch = useDispatch();
+
+  // console.log(saves);
 
   const getSavedItems = JSON.parse(localStorage.getItem("savedItems"));
 
@@ -27,17 +29,16 @@ const Searchbar = () => {
     if (data) {
       setAutoCompleteList(data);
     }
-
     if (getSavedItems) {
       dispatch(setSaves(getSavedItems));
     }
   }, [data]);
 
-  const handleKeyDown = (e) => {
-    setSearch(e.target.value);
-    if (e.key === "Enter") {
+  const handleKeyDown = (event) => {
+    setSearch(event.target.value);
+    if (event.key === "Enter") {
       document.getElementsByClassName("text").click();
-      e.target.value = "";
+      event.target.value = "";
     }
   };
 
@@ -57,15 +58,16 @@ const Searchbar = () => {
   };
 
   useEffect(() => {
+    // save to local storage
     localStorage.setItem("savedItems", JSON.stringify(saves));
 
     const savedItems = JSON.parse(localStorage.getItem("savedItems"));
-
     if (savedItems) {
-      for (let i = 0; savedItems.length; i++) {
+      for (let i = 0; i < savedItems.length; i++) {
         if (savedItems[i].name === location.name) {
           setSelected(true);
           dispatch(setItemSaved(true));
+          // break to stop statement from throwing false
           break;
         } else if (savedItems[i].id !== location.name) {
           setSelected(false);
