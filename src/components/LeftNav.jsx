@@ -4,7 +4,7 @@ import { Tabs, Tab } from "@mui/material";
 import { MemoryRouter, Link, matchPath, useLocation } from "react-router-dom";
 import { StaticRouter } from "react-router-dom/server";
 import { Dashboard, Map, Star } from "@mui/icons-material";
-import { LeftNavContainer } from "../theme/Styled";
+import { LeftNavContainer } from "../theme/styled";
 import logo from "../image/logo.png";
 
 const Router = (props) => {
