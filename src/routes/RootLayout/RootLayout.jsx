@@ -6,6 +6,7 @@ import { DashboardContainer, MiddleContainer } from "../../theme/Styled";
 import TopNav from "../../components/TopNav";
 import Footer from "../../components/Footer";
 import LeftNav from "../../components/LeftNav";
+import WeatherDisplay from "../../components/WeatherDisplay";
 
 const RootLayout = () => {
   return (
@@ -14,10 +15,13 @@ const RootLayout = () => {
         <TopNav />
         <DashboardContainer>
           <LeftNav />
+          <MiddleContainer>
+            <main>
+              <Outlet />
+            </main>
+          </MiddleContainer>
+          <WeatherDisplay />
         </DashboardContainer>
-        <main>
-          <Outlet />
-        </main>
         <Footer />
       </ThemeProvider>
     </>

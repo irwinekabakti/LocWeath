@@ -1,7 +1,123 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  Box,
+  Autocomplete,
+  TextField,
+  InputAdornment,
+  ToggleButton,
+} from "@mui/material";
+import { Search, Star } from "@mui/icons-material";
+import { useGetSearchWeatherQuery } from "../store/query/weather-api";
+import { setLocation } from "../store/action/weather-slice";
+import { setSaves, setItemSaved } from "../store/action/weather-slice";
 
 const Searchbar = () => {
-  return <div>Searchbar</div>;
+  const [selected, setSelected] = useState(false);
+  const [search, setSearch] = useState("");
+  const [autoCompleteList, setAutoCompleteList] = useState([]);
+  const dispatch = useDispatch();
+
+  const { data } = useGetSearchWeatherQuery(search);
+  const saves = useSelector((state) => state.weatherState.saves);
+
+  const getSavedItems = JSON.parse(localStorage.getItem("savedItems"));
+
+  useEffect(() => {
+    if (data) {
+      setAutoCompleteList(data);
+    }
+
+    if (getSavedItems) {
+      dispatch(setSaves(getSavedItems));
+    }
+  }, [data]);
+
+  const handleKeyDown = (e) => {
+    setSearch(e.target.value);
+    if (e.key === "Enter") {
+      document.getElementsByClassName("text").click();
+      e.target.value = "";
+    }
+  };
+
+  const addSaves = (item) => {
+    let itemList = [...saves];
+    let addArray = true;
+    for (let i = 0; i < saves.length; i++) {
+      if (saves[i].name === item.name) {
+        itemList.splice(i, 1);
+        addArray = false;
+      }
+    }
+    if (addArray) {
+      itemList.push(item);
+    }
+    dispatch(setSaves([...itemList]));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("savedItems", JSON.stringify(saves));
+
+    const savedItems = JSON.parse(localStorage.getItem("savedItems"));
+
+    if (savedItems) {
+      for (let i = 0; savedItems.length; i++) {
+        if (savedItems[i].name === location.name) {
+          setSelected(true);
+          dispatch(setItemSaved(true));
+          break;
+        } else if (savedItems[i].id !== location.name) {
+          setSelected(false);
+          dispatch(setItemSaved(false));
+        }
+      }
+    }
+  }, [saves]);
+
+  return (
+    <Box sx={{ display: "flex", alignItems: "flex-end", gap: "1rem" }}>
+      <Autocomplete
+        sx={{ width: "15rem", padding: 0 }}
+        freeSolo
+        disableClearable
+        filterOptions={(x) => x}
+        id="search"
+        onChange={(event, value) => dispatch(setLocation(value))}
+        options={autoCompleteList?.map((data) => data.name)}
+        renderInput={(params) => (
+          <TextField
+            className="text"
+            id="searchField"
+            placeholder="Search Locations"
+            onKeyDown={handleKeyDown}
+            {...params}
+            InputProps={{
+              ...params.InputProps,
+              type: "search",
+              startAdornment: (
+                <InputAdornment position="start">
+                  {" "}
+                  <Search />{" "}
+                </InputAdornment>
+              ),
+            }}
+          />
+        )}
+      />
+      <ToggleButton
+        sx={{ width: "4rem" }}
+        value="check"
+        color="primary"
+        selected={selected}
+        onChange={() => {
+          setSelected(!selected);
+          addSaves(location);
+        }}>
+        <Star />
+      </ToggleButton>
+    </Box>
+  );
 };
 
 export default Searchbar;
