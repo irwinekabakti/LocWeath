@@ -75,7 +75,7 @@ const Dashboard = () => {
           <Searchbar location={location} />
         </Stack>
         <TodaysOverview current={current} forecast={forecast} />
-        {/* <ThreeDaysForecast forecast={{forecast}}/> */}
+        <ThreeDaysForecast forecast={forecast} />
         {/* <WeatherChart forecast={{forecast}}/> */}
       </Box>
     </>
