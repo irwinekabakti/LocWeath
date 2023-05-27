@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLocation } from "../store/action/weather-slice";
 import { Box, Typography, Stack, Divider } from "@mui/material";
 import { useGetForecastWeatherQuery } from "../store/query/weather-api";
-// import Moment from "react-moment";
 import moment from "moment";
 import useGeoLocation from "../hooks/useGeolocation";
 import WeatherChart from "../components/Chart";
@@ -19,7 +18,7 @@ const Dashboard = () => {
   const { data, isFetching } = useGetForecastWeatherQuery(locationState);
   const dispatch = useDispatch();
 
-  console.log(data);
+  // console.log(data);
 
   const current = data?.current;
   const forecast = data?.forecast?.forecastday;
@@ -66,6 +65,7 @@ const Dashboard = () => {
           </Stack>
           <Searchbar location={location} />
         </Stack>
+        <Divider />
         <TodaysOverview current={current} forecast={forecast} />
         <ThreeDaysForecast forecast={forecast} />
         <WeatherChart forecast={forecast} />

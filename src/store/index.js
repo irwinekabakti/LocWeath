@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { weatherApi } from "./query/weather-api";
 import weatherSlice from "./action/weather-slice";
 
