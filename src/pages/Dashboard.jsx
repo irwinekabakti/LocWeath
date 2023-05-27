@@ -76,7 +76,7 @@ const Dashboard = () => {
         </Stack>
         <TodaysOverview current={current} forecast={forecast} />
         <ThreeDaysForecast forecast={forecast} />
-        {/* <WeatherChart forecast={{forecast}}/> */}
+        <WeatherChart forecast={forecast} />
       </Box>
     </>
   );
