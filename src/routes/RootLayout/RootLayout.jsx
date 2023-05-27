@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "../../theme/theme";
-import { DashboardContainer, MiddleContainer } from "../../theme/Styled";
+import { DashboardContainer, MiddleContainer } from "../../theme/styled";
 import TopNav from "../../components/TopNav";
 import Footer from "../../components/Footer";
 import LeftNav from "../../components/LeftNav";
