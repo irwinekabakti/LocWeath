@@ -38,7 +38,7 @@ const TodaysOverview = ({ current, forecast }) => {
   return (
     <Box sx={{ marginTop: "2rem" }}>
       <Typography sx={{ marginBottom: "1rem" }} color="primary" variant="h6">
-        Today's Overview
+        Today’s Overview
       </Typography>
       <Swiper
         spaceBetween={15}
