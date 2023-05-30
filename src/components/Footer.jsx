@@ -44,7 +44,8 @@ const Footer = () => {
         </Link> */}
 
         <Typography color="secondary" variant="caption">
-          © {year} Irwin siang bikin algorithm malem dugem. All rights reserved
+          {/* © {year} Irwin siang bikin algorithm malem dugem. All rights reserved */}
+          © {year} Irwin Ekabakti. All rights reserved
         </Typography>
       </Stack>
     </Box>
