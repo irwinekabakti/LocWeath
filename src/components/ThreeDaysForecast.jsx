@@ -16,8 +16,7 @@ const ThreeDaysForecast = ({ forecast }) => {
                 {moment(days.date).format("dddd")}
               </Typography>
               <Typography variant="caption">
-                {" "}
-                {days.day.condition.text}{" "}
+                {days.day.condition.text}
               </Typography>
               <img
                 className="img-icon-2"
@@ -26,23 +25,20 @@ const ThreeDaysForecast = ({ forecast }) => {
               />
               <Stack direction={{ xs: "column", sm: "row" }} spacing={1}>
                 <Typography color="secondary.dark" variant="body2">
-                  {" "}
-                  High:{" "}
+                  High:
                   {fahrenheit
                     ? `${days.day.maxtemp_f}°F`
                     : `${days.day.maxtemp_c}°C`}
                 </Typography>
                 <Typography color="secondary.dark" variant="body2">
-                  {" "}
-                  Low:{" "}
+                  Low:
                   {fahrenheit
                     ? `${days.day.mintemp_f}°F`
-                    : `${days.day.mintemp_c}°C`}{" "}
+                    : `${days.day.mintemp_c}°C`}
                 </Typography>
               </Stack>
               <Typography color="secondary.dark" variant="subtitle2">
-                {" "}
-                Rain: {days.day.daily_chance_of_rain}%{" "}
+                Rain: {days.day.daily_chance_of_rain}%
               </Typography>
             </Stack>
           </Paper>

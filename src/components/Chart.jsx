@@ -35,13 +35,13 @@ ChartJS.register(
 const WeatherChart = ({ forecast }) => {
   const [hourly, setHourly] = useState(true);
 
-  const hourlyTemps = [];
-  const hourlyTimes = [];
-  const hourlyIcons = [];
+  let hourlyTemps = [];
+  let hourlyTimes = [];
+  let hourlyIcons = [];
 
-  const dayTemps = [];
-  const dayDates = [];
-  const dayIcons = [];
+  let dayTemps = [];
+  let dayDates = [];
+  let dayIcons = [];
 
   const fahrenheit = useSelector((state) => state.weatherState.fahrenheit);
 
@@ -136,16 +136,14 @@ const WeatherChart = ({ forecast }) => {
     <ContentContainer>
       <Stack direction="row" spacing={2}>
         <Typography variant="h6">
-          {" "}
-          {`Forecast ${fahrenheit ? "°F" : "°C"}`}{" "}
+          {`Forecast ${fahrenheit ? "°F" : "°C"}`}
         </Typography>
         <Button
           onClick={() => {
             hourly ? setHourly(false) : setHourly(true);
           }}
           variant="text">
-          {" "}
-          {hourly ? "Show Daily" : "Show Hourly"}{" "}
+          {hourly ? "Show Daily" : "Show Hourly"}
         </Button>
       </Stack>
       <Chart type="bar" options={options} data={tempData} />

@@ -20,7 +20,7 @@ const Footer = () => {
         justifyContent="center"
         alignItems="center"
         sx={{ padding: 3 }}>
-        <Link to="/" style={{ textDecoration: "none" }}>
+        {/* <Link to="/" style={{ textDecoration: "none" }}>
           {" "}
           <Typography variant="subtitle2" color="secondary">
             {" "}
@@ -40,9 +40,11 @@ const Footer = () => {
             {" "}
             Saves{" "}
           </Typography>{" "}
-        </Link>
+        •
+        </Link> */}
+
         <Typography color="secondary" variant="caption">
-          © {year} Irwin Pendugem Handal.
+          © {year} Irwin siang bikin algorithm malem dugem. All rights reserved
         </Typography>
       </Stack>
     </Box>
