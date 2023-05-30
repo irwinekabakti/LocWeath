@@ -21,8 +21,6 @@ const Searchbar = ({ location }) => {
   const saves = useSelector((state) => state.weatherState.saves);
   const dispatch = useDispatch();
 
-  // console.log(saves);
-
   const getSavedItems = JSON.parse(localStorage.getItem("savedItems"));
 
   useEffect(() => {
@@ -99,8 +97,7 @@ const Searchbar = ({ location }) => {
               type: "search",
               startAdornment: (
                 <InputAdornment position="start">
-                  {" "}
-                  <Search />{" "}
+                  <Search />
                 </InputAdornment>
               ),
             }}

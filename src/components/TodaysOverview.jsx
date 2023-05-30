@@ -38,8 +38,7 @@ const TodaysOverview = ({ current, forecast }) => {
   return (
     <Box sx={{ marginTop: "2rem" }}>
       <Typography sx={{ marginBottom: "1rem" }} color="primary" variant="h6">
-        {" "}
-        Todays Overview{" "}
+        Today's Overview
       </Typography>
       <Swiper
         spaceBetween={15}
@@ -80,17 +79,14 @@ const TodaysOverview = ({ current, forecast }) => {
                   }}>
                   <Stack justifyContent="center" alignItems="center">
                     <Typography variant="subtitle2" color="secondary">
-                      {" "}
                       {moment(dateToFormatHour).format("h A")}
                     </Typography>
                     <img src={hour.condition.icon} alt="weather icon" />
                     <Typography color="secondary">
-                      {" "}
                       {fahrenheit ? `${hour.temp_f}°F` : `${hour.temp_c}°C`}
                     </Typography>
                     <Typography color="secondary">
-                      {" "}
-                      {hour.chance_of_rain}%{" "}
+                      {hour.chance_of_rain}%
                     </Typography>
                   </Stack>
                 </Paper>
@@ -117,10 +113,9 @@ const TodaysOverview = ({ current, forecast }) => {
               elevation={0}>
               <Stack>
                 <Typography color="secondary.dark" variant="subtitle2">
-                  {" "}
-                  {item}{" "}
+                  {item}
                 </Typography>
-                <Typography variant="subtitle2"> {value} </Typography>
+                <Typography variant="subtitle2">{value}</Typography>
               </Stack>
             </Paper>
           </Grid>

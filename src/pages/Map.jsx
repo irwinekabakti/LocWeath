@@ -6,7 +6,7 @@ import useGeoLocation from "../hooks/useGeolocation";
 import { setLocation } from "../store/action/weather-slice";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetForecastWeatherQuery } from "../store/query/weather-api";
-import { useGetSearchWeatherQuery } from "../store/query/weather-api";
+import { useGetWeatherNewsQuery } from "../store/query/news-api";
 import Loader from "../components/Loader";
 
 const Map = () => {
@@ -30,23 +30,19 @@ const Map = () => {
       ];
 
     dispatch(setLocation(currentLocation));
-    // eslint-disable-next-line
   }, [getGeoLocation]);
 
-  // const { data: news } = useGetWeatherNewsQuery(location?.region)
+  const { data: news } = useGetWeatherNewsQuery(location?.region);
 
-  if (isFetching || !isLoadingLocation)
-    return (
-      <>
-        {" "}
-        <Loader />{" "}
-      </>
-    );
+  // console.log(news);
+
+  if (isFetching || !isLoadingLocation) return <Loader />;
 
   return (
     <Box spacing={2}>
       <Stack location={location} current={current}>
         <Mapbox location={location} current={current} />
+        <News news={news} />
       </Stack>
     </Box>
   );
